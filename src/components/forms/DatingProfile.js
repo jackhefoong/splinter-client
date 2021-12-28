@@ -88,7 +88,7 @@ function DatingProfile() {
       .then((data) => setLikedBy(data[0]?.likedBy));
   };
 
-  const result = likes?.filter((like) => likedby.includes(like));
+  const result = likes?.filter((like) => likedby?.includes(like));
 
   useEffect(() => {
     showMyProfile();
