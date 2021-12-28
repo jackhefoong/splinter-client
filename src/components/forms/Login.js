@@ -3,24 +3,24 @@ import {useNavigate} from 'react-router-dom';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import Swal from 'sweetalert2';
 
-import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+// import axios from 'axios';
+// import jwt_decode from 'jwt-decode';
 
-const clientId = '241400382471-pd0fv4kibgptrsg2jon5bhfkk1c207ca.apps.googleusercontent.com';
+// const clientId = '241400382471-pd0fv4kibgptrsg2jon5bhfkk1c207ca.apps.googleusercontent.com';
 
 function Login({handleLogin}) {
   let navigate = useNavigate();
   let [user, setUser] = useState({});
 
-  const [gsiLoaded, setGsiLoaded] = useState(false);
+  // const [gsiLoaded, setGsiLoaded] = useState(false);
   // const [user, setUser] = useState(null)
-  const btnDivRef = useRef();
+  // const btnDivRef = useRef();/
 
-  const onSignOut = () => {
-    window.google?.accounts.id.revoke(user.sub, (done, err) => {
-      console.log(done, err);
-    });
-  };
+  // const onSignOut = () => {
+  //   window.google?.accounts.id.revoke(user.sub, (done, err) => {
+  //     console.log(done, err);
+  //   });
+  // };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
@@ -48,43 +48,43 @@ function Login({handleLogin}) {
     setUser({...user, [e.target.name]: e.target.value});
   };
 
-  useEffect(() => {
-    const handleGoogleSignIn = async (res) => {
-      const decoded = jwt_decode(res.credential);
-      console.log(decoded);
-      const {data} = await axios.post(`${process.env.REACT_APP_API_URL}/auth/tokenLogin`, {
-        credential: res.credential,
-      });
-      // setUser(data);
-      // console.log(user);
-    };
+  // useEffect(() => {
+  //   const handleGoogleSignIn = async (res) => {
+  //     const decoded = jwt_decode(res.credential);
+  //     console.log(decoded);
+  //     const {data} = await axios.post(`${process.env.REACT_APP_API_URL}/auth/tokenLogin`, {
+  //       credential: res.credential,
+  //     });
+  //     // setUser(data);
+  //     // console.log(user);
+  //   };
 
-    const initializeGsi = () => {
-      if (!window.google || gsiLoaded) return;
-      setGsiLoaded(true);
+  //   const initializeGsi = () => {
+  //     if (!window.google || gsiLoaded) return;
+  //     setGsiLoaded(true);
 
-      window.google.accounts.id.initialize({
-        client_id: clientId,
-        callback: handleGoogleSignIn,
-      });
-      window.google.accounts.id.renderButton(
-        document.getElementById('buttonDiv'),
-        {theme: 'outline', size: 'large'}, // customization attributes
-      );
-    };
+  //     window.google.accounts.id.initialize({
+  //       client_id: clientId,
+  //       callback: handleGoogleSignIn,
+  //     });
+  //     window.google.accounts.id.renderButton(
+  //       document.getElementById('buttonDiv'),
+  //       {theme: 'outline', size: 'large'}, // customization attributes
+  //     );
+  //   };
 
-    const script = document.createElement('script');
-    script.src = 'https://accounts.google.com/gsi/client';
-    script.onload = initializeGsi;
-    script.async = true;
-    script.id = 'google-script';
-    document.querySelector('head')?.appendChild(script);
+  //   const script = document.createElement('script');
+  //   script.src = 'https://accounts.google.com/gsi/client';
+  //   script.onload = initializeGsi;
+  //   script.async = true;
+  //   script.id = 'google-script';
+  //   document.querySelector('head')?.appendChild(script);
 
-    return () => {
-      document.getElementById('google-script')?.remove();
-      window.google?.accounts.id.cancel();
-    };
-  }, [gsiLoaded]);
+  //   return () => {
+  //     document.getElementById('google-script')?.remove();
+  //     window.google?.accounts.id.cancel();
+  //   };
+  // }, [gsiLoaded]);
 
   return (
     <Container className="mt-5">

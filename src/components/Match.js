@@ -34,6 +34,8 @@ function Match() {
       });
   };
 
+  // console.log(allProfiles.length)
+
   if (localStorage.hasOwnProperty('token') && localStorage.hasOwnProperty('userData')) {
     var showAllProfiles = allProfiles?.map((profiles) => {
       return <DatingCards data={profiles} key={profiles._id} />;
