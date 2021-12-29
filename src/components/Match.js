@@ -23,7 +23,11 @@ function Match() {
 
   const getAllProfiles = (phoneNum) => {
     phoneNum = [JSON.parse(localStorage.getItem('userData')).phoneNumber];
-    phoneNum.push(...likes);
+    if(likes) {
+      phoneNum.push(...likes);
+    } else {
+      console.log("no likes")
+    }
     console.log(phoneNum);
     fetch(`${process.env.REACT_APP_API_URL}/profiles/except/${phoneNum}`, {
       headers: {
@@ -32,7 +36,8 @@ function Match() {
     })
       .then((res) => res.json())
       .then((data) => {
-        data && setAllProfiles(data);
+        data && setAllProfiles(data)
+        console.log(data)
       });
   };
 
@@ -50,7 +55,7 @@ function Match() {
       });
   };
 
-  // console.log(allProfiles.length)
+  console.log(allProfiles)
 
   if (localStorage.hasOwnProperty('token') && localStorage.hasOwnProperty('userData')) {
     var showAllProfiles = allProfiles?.map((profiles) => {
@@ -66,13 +71,22 @@ function Match() {
   }, []);
 
   useEffect(() => {
-    if (likes) {
+    if (likes || JSON.parse(localStorage.getItem('userData')).isAdmin) {
       getAllProfiles();
+    } else {
     }
   }, [likes]);
 
   if (check.length !== 0 && check?.isRestricted === false) {
-    return showAllProfiles;
+    if (allProfiles.length !== 0) {
+      return showAllProfiles;
+    } else {
+      return (
+        <Container className="bgOpaque text-center text-white p-5 mt-5">
+          <h1>You already liked everyone, get a life</h1> 
+        </Container>
+      );
+    }
   } else if (check?.isRestricted === true) {
     return (
       <Container className="bgOpaque text-center text-white p-5 mt-5">
@@ -80,7 +94,7 @@ function Match() {
       </Container>
     );
   } else if (JSON.parse(localStorage.getItem('userData')).isAdmin) {
-    return showAllProfiles;
+    return showAllProfiles
   } else {
     return (
       <Container className="bgOpaque text-center text-white p-5">
