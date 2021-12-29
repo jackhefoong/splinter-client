@@ -6,9 +6,25 @@ import DatingCards from './DatingCards';
 function Match() {
   const [allProfiles, setAllProfiles] = useState([]);
   const [check, setCheck] = useState({});
+  const [likes, setLikes] = useState(null);
+
+  const myLikes = () => {
+    let phoneNum = JSON.parse(localStorage.getItem('userData')).phoneNumber;
+    fetch(`${process.env.REACT_APP_API_URL}/likes/${phoneNum}`, {
+      headers: {
+        'x-auth-token': localStorage.getItem('token'),
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLikes(data[0]?.likes);
+      });
+  };
 
   const getAllProfiles = (phoneNum) => {
-    phoneNum = JSON.parse(localStorage.getItem('userData')).phoneNumber;
+    phoneNum = [JSON.parse(localStorage.getItem('userData')).phoneNumber];
+    phoneNum.push(...likes);
+    console.log(phoneNum);
     fetch(`${process.env.REACT_APP_API_URL}/profiles/except/${phoneNum}`, {
       headers: {
         'x-auth-token': localStorage.getItem('token'),
@@ -45,9 +61,15 @@ function Match() {
   //count swipe compare w map length . display nomore profiles
 
   useEffect(() => {
-    getAllProfiles();
+    myLikes();
     checkUser();
   }, []);
+
+  useEffect(() => {
+    if (likes) {
+      getAllProfiles();
+    }
+  }, [likes]);
 
   if (check.length !== 0 && check?.isRestricted === false) {
     return showAllProfiles;
