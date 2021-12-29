@@ -63,16 +63,16 @@ function Post({data, refresh}) {
             <Card>
               {data.image && (
                 <Card.Img
-                  src={`${process.env.REACT_APP_API_URL}/${data.image.split('/')[2]}`}
+                  src={`${process.env.REACT_APP_API_URL}/${data?.image.split('/')[2]}`}
                   className="img-fluid postCardImg"
                 />
               )}
 
               <Card.Body>
-                <Card.Title>{data.title}</Card.Title>
-                <Card.Text>{data.content}</Card.Text>
+                <Card.Title>{data?.title}</Card.Title>
+                <Card.Text>{data?.content}</Card.Text>
               </Card.Body>
-              <Card.Footer>Posted by {data.author}</Card.Footer>
+              <Card.Footer>Posted by {data?.author}</Card.Footer>
             </Card>
           </Col>
 

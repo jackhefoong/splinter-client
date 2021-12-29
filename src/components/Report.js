@@ -130,10 +130,10 @@ function Report({data, refresh}) {
                   </button>
                 )}
               </Card.Title>
-              <Card.Text>User Details: {profile.fullName}</Card.Text>
-              <small>User: {data.user}</small>
+              <Card.Text>User Details: {profile?.fullName}</Card.Text>
+              <small>User: {data?.user}</small>
             </Card.Body>
-            <Card.Footer>Reported by {reporter.fullName}</Card.Footer>
+            <Card.Footer>Reported by {reporter?.fullName}</Card.Footer>
           </Card>
         </Col>
         <div className="text-end">

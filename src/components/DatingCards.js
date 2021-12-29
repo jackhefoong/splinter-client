@@ -89,7 +89,7 @@ const DatingCards = ({data}) => {
             className="swipe"
             key={data._id}
             preventSwipe={['up, down']}
-            onSwipe={(direction, name, phoneNumber) => swiped(direction, data.fullName, data.phoneNumber)}
+            onSwipe={(direction, name, phoneNumber) => swiped(direction, data?.fullName, data?.phoneNumber)}
             // onCardLeftScreen={(name) => outOfFrame(data.fullName)}
           >
             <div

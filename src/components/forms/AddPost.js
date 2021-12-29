@@ -36,7 +36,7 @@ function AddPost({allPosts, author}) {
     })
       .then((res) => res.json())
       .then((data) => {
-        Swal.fire(JSON.stringify(data.msg));
+        Swal.fire(data.msg);
         allPosts();
       });
     e.target.reset();

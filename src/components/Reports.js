@@ -14,7 +14,7 @@ function Reports() {
     })
       .then((res) => res.json())
       .then((data) => {
-        data && setReports(data.reverse());
+        data && setReports(data?.reverse());
       });
   };
 

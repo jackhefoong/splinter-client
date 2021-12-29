@@ -16,7 +16,7 @@ function Posts() {
     })
       .then((res) => res.json())
       .then((data) => {
-        data && setPosts(data.reverse());
+        data && setPosts(data?.reverse());
       });
   };
 

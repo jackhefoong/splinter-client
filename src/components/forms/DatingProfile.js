@@ -40,7 +40,7 @@ function DatingProfile() {
     })
       .then((res) => res.json())
       .then((data) => {
-        Swal.fire(JSON.stringify(data.msg));
+        Swal.fire(data.msg);
         showMyProfile();
       });
     e.target.reset();
@@ -96,7 +96,6 @@ function DatingProfile() {
     likesMe();
   }, []);
 
-
   let profileInfo = existing;
 
   if (profileInfo && profileInfo.isRestricted === false) {
@@ -141,16 +140,18 @@ function DatingProfile() {
             </Col>
           </Row>
         </div>
-        <div className="bgOpaque">
-          <Row className="justify-content-center text-white align-items-center mt-3">
-            <h2 className="text-center mt-2">My Matches</h2>
-          </Row>
-          <Row>
-            {result?.map((result) => {
-              return <Matches phoneNum={result} key={result._id} />;
-            })}
-          </Row>
-        </div>
+        {result.length !== 0 && (
+          <div className="bgOpaque">
+            <Row className="justify-content-center text-white align-items-center mt-3">
+              <h2 className="text-center mt-2">My Matches</h2>
+            </Row>
+            <Row>
+              {result?.map((result) => {
+                return <Matches phoneNum={result} key={result._id} />;
+              })}
+            </Row>
+          </div>
+        )}
       </Container>
     );
   } else if (profileInfo?.isRestricted) {
