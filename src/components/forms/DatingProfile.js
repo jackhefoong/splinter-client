@@ -140,7 +140,7 @@ function DatingProfile() {
             </Col>
           </Row>
         </div>
-        {result.length !== 0 && (
+        {result?.length !== 0 && (
           <div className="bgOpaque">
             <Row className="justify-content-center text-white align-items-center mt-3">
               <h2 className="text-center mt-2">My Matches</h2>
