@@ -35,14 +35,22 @@ function App() {
 
   return (
     <div className="App">
+      {/* Top Nav for logout  */}
       <TopNav handleLogout={handleLogout} />
       <Routes>
+        {/* default path / root path  */}
         <Route path="/" element={<Home />} />
+        {/* match page (swiping)  */}
         <Route path="/match" element={<Match />} />
+        {/* register page  */}
         <Route path="/register" element={<Register handleLogin={handleLogin} />} />
+        {/* login page  */}
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+        {/* profile page  */}
         <Route path="/myprofile" element={<DatingProfile />} />
+        {/* posts page  */}
         <Route path="/posts" element={<Posts />} />
+        {/* reports page  */}
         <Route path="/reports" element={<Reports />} />
       </Routes>
     </div>
