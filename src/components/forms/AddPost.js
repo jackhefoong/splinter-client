@@ -7,14 +7,14 @@ function AddPost({allPosts, author}) {
 
   const [post, setPost] = useState({});
 
-  const onChangeHandler = (e) => {
+  const changeHandler = (e) => {
     setPost({
       ...post,
       [e.target.name]: e.target.value,
     });
   };
 
-  const onSubmitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
 
     let input = document.getElementById('image');
@@ -44,16 +44,18 @@ function AddPost({allPosts, author}) {
 
   return (
     <Container>
+      {/* center row  */}
       <Row className="text-white justify-content-center ">
+        {/* half screen  */}
         <Col md="6">
-          <Form onSubmit={onSubmitHandler}>
+          <Form onSubmit={submitHandler}>
             <Form.Group>
               <Form.Label>Title</Form.Label>
-              <Form.Control type="text" name="title" onChange={onChangeHandler} />
+              <Form.Control type="text" name="title" onChange={changeHandler} />
             </Form.Group>
             <Form.Group>
               <Form.Label>Content</Form.Label>
-              <Form.Control type="text" name="content" onChange={onChangeHandler} />
+              <Form.Control type="text" name="content" onChange={changeHandler} />
             </Form.Group>
             <Form.Group>
               <Form.Control type="hidden" name="author" id="author" value={name} />
