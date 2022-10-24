@@ -34,7 +34,7 @@ function EditDatingProfile({id, showMyProfile}) {
     e.target.reset();
   };
 
-  const onChangeHandler = (e) => {
+  const changeHandler = (e) => {
     setUpdate({
       ...update,
       [e.target.name]: e.target.value,
@@ -50,7 +50,7 @@ function EditDatingProfile({id, showMyProfile}) {
         </Form.Group>
         <Form.Group>
           <Form.Label>Full Name</Form.Label>
-          <Form.Control type="text" name="fullName" onChange={onChangeHandler} />
+          <Form.Control type="text" name="fullName" onChange={changeHandler} />
         </Form.Group>
         <Form.Group>
           <Form.Label>Age</Form.Label>
@@ -81,7 +81,7 @@ function EditDatingProfile({id, showMyProfile}) {
         </Form.Group>
         <Form.Group>
           <Form.Label>Biography</Form.Label>
-          <Form.Control type="text" name="bio" onChange={onChangeHandler} />
+          <Form.Control type="text" name="bio" onChange={changeHandler} />
         </Form.Group>
         <div className="text-center">
           <Button type="submit" className="btn-inverted mt-2">
