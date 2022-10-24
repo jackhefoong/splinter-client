@@ -46,8 +46,11 @@ function App() {
         <Route path="/register" element={<Register handleLogin={handleLogin} />} />
         {/* login route  */}
         <Route path="/login" element={<Login handleLogin={handleLogin} />} />\
+        {/* dating profile route  */}
         <Route path="/myprofile" element={<DatingProfile />} />
+        {/* posts route  */}
         <Route path="/posts" element={<Posts />} />
+        {/* reports route  */}
         <Route path="/reports" element={<Reports />} />
       </Routes>
     </div>
