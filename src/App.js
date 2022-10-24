@@ -35,12 +35,17 @@ function App() {
 
   return (
     <div className="App">
+      {/* logout nav  */}
       <TopNav handleLogout={handleLogout} />
       <Routes>
+        {/* home route  */}
         <Route path="/" element={<Home />} />
+
         <Route path="/match" element={<Match />} />
+                {/* register route  */}
         <Route path="/register" element={<Register handleLogin={handleLogin} />} />
-        <Route path="/login" element={<Login handleLogin={handleLogin} />} />
+        {/* login route  */}
+        <Route path="/login" element={<Login handleLogin={handleLogin} />} />\
         <Route path="/myprofile" element={<DatingProfile />} />
         <Route path="/posts" element={<Posts />} />
         <Route path="/reports" element={<Reports />} />
