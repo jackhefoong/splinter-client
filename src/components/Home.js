@@ -42,9 +42,9 @@ function Home() {
             </Col>
             <Col md="6">
               <div className="mt-5 text-white text-end">
-                <h2>Interact with your matches !!!!</h2>
-                <p>Talk about your topics of interest and get to know each other better (WoHoo!) 😉</p>
-                <p>(jk i lied its not even working XD)</p>
+                <h2>Interact with your matches</h2>
+                <p>Talk about your topics of interest and get to know each other better 😉</p>
+                <p>(jk i lied idk how to do livechat)</p>
               </div>
             </Col>
           </Row>
