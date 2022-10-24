@@ -6,7 +6,7 @@ import Matches from '../Matches';
 
 function DatingProfile() {
   const [profile, setProfile] = useState({});
-  const [existing, setExisting] = useState({});
+  const [exist, setExist] = useState({});
   const [likes, setLikes] = useState([]);
   const [likedby, setLikedBy] = useState([]);
 
@@ -62,7 +62,7 @@ function DatingProfile() {
     })
       .then((res) => res.json())
       .then((data) => {
-        data && setExisting(data);
+        data && setExist(data);
       });
   };
 
@@ -96,7 +96,7 @@ function DatingProfile() {
     likesMe();
   }, []);
 
-  let profileInfo = existing;
+  let profileInfo = exist?.profilePicture;
 
   if (profileInfo && profileInfo.isRestricted === false) {
     return (
